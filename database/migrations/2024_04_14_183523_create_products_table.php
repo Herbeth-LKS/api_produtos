@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->timestamps();
         });
+
+        
     }
 
     public function down(): void

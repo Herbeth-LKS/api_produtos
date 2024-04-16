@@ -19,3 +19,4 @@ Route::get('/list/products/', [ProductController::class, 'index']);
 Route::put('/update/products/{code}', [ProductController::class, 'update']);
 Route::delete('/delete/products/{code}', [ProductController::class, 'delete']);
 Route::post('/decrement-stock/products/{code}', [ProductController::class, 'decrementStock']);
+

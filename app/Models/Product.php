@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use HasFactory;
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
 
     protected $fillable = ['code', 'name', 'description', 'value', 'quantity'];
 
@@ -18,7 +25,7 @@ class Product extends Model
     protected $keyType = 'string';
 
     protected $casts = [
-        'value' => 'decimal:2', // Convertendo para decimal com 2 casas decimais
+        'value' => 'decimal:2',
     ];
 }
 
