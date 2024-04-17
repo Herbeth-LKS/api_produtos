@@ -18,16 +18,7 @@ class ProductController extends Controller
         $product->value = $request->input('value');
         $product->quantity = $request->input('quantity');
         $product->save();
-    
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('uploads', 'public');
 
-            $image = new Image;
-            $image->url = $path;
-            $image->product_id = $product->id; 
-            $image->save();
-        }
-    
         return response()->json($product);
     }
 
@@ -39,18 +30,8 @@ class ProductController extends Controller
         $product->quantity = $request->input('quantity');
         $product->save();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            
-            $path = $request->image->store('product_images');
-
-            $product->images()->delete();
-
-            $product->images()->create(['url' => $path]);
-        }
-
         return response()->json($product);
     }
-
 
     public function index() {
         $products = Product::with('images')->paginate(20);
